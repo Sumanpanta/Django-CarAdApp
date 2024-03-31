@@ -129,6 +129,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
+JAZZMIN_SETTING={
+    "site_title": "MotoAd",
+    "site_header": "MotoAdvertisement",
+    "show_sidebar": True,
+    "default_icon_parents":"fas fa-chevron-circle-right",
+    "show_ui_builder": True,  
+}
 
     
