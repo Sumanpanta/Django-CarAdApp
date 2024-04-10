@@ -5,11 +5,11 @@
 
 {% block 'body' %}
 <div class="d-flex h-100 text-center text-white index">
-     <video autoplay muted loop id="myVideo">
+     {% comment %} <video autoplay muted loop id="myVideo">
         <source src="{% static 'videos/bg.mp4' %}" type="video/mp4">
         <!-- Credit: https://www.pexels.com/@kelly-l-1179532 (Pexels.com)-->
-    </video> 
-    {% comment %} <img src="{% static 'images/maincar.jpg' %}" alt="Your Image" width="100%"> {% endcomment %}
+    </video>  {% endcomment %}
+    <img src="{% static 'images/maincar.jpg' %}" alt="Your Image" width="100%">
    <div class="d-flex w-100 h-100 p-3 mx-auto flex-column main-content">
         <header class="mb-auto">
             <div>
@@ -23,17 +23,17 @@
                 </nav> 
             </div> 
         </header>
-        <main class="px-2">
+        <main class="px-3">
             <h2>Find a deal near you!</h2>
             <p class="lead">Looking to buy or sell a used car? We've got you
                 covered. </br> AutoMaticx is the leading used car marketplace.</p>
             <p class="lead">
-                <a href=""
+                <a href="{% url 'register' %}"
                     class="btn btn-lg btn-secondary fw-bold border-white bg-white">Register</a>
             </p>
         </main>
         <footer class="mt-auto text-white-50">
-            <p>Copyright © {% now 'Y' %} <a href="" class="text-white">AutoMaticx</a> by <a href="https://preneure.com"
+            <p>Copyright © {% now 'Y' %} <a href="" class="text-white">AutoMaticx</a> by <a href="https://selflearner.com"
                     class="text-white">SelfLearner.com</a></p>
          </footer>
         </div>
@@ -41,7 +41,7 @@
     </div>
 
  {% endblock %}
- {% block 'footer' %}
+ {% block footer%}
 
 {% endblock %}
 

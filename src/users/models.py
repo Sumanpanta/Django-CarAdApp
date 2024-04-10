@@ -20,7 +20,7 @@ class Profile(models.Model):
     photo = models.ImageField(upload_to=user_directory_path, null=True)
     bio = models.CharField(max_length=150, blank = True)
     phone_number = models.CharField(max_length=12, blank = True)
-    Location = models.OneToOneField(Location, on_delete=models.SET_NULL, null = True)
+    location = models.OneToOneField(Location, on_delete=models.SET_NULL, null = True)
     
 #on_delete rakhyo vani if profile gets deleted, location deleted too
     

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "main",
     "users",
+    "crispy_bootstrap5",
    
 ]
 
@@ -109,6 +110,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Login Settings
+LOGIN_REDIRECT_URL = '/home/'
+LOGIN_URL = '/login/'
+
+# Messages Settings
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -127,7 +137,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Media Files (Uploaded Files)
 
@@ -156,12 +166,12 @@ EMAIL_USE_TLS = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-JAZZMIN_SETTING={
-    "site_title": "MotoAd",
-    "site_header": "MotoAdvertisement",
-    "show_sidebar": True,
-    "default_icon_parents":"fas fa-chevron-circle-right",
-    "show_ui_builder": True,  
-}
+# JAZZMIN_SETTING={
+#     "site_title": "MotoAd",
+#     "site_header": "MotoAdvertisement",
+#     "show_sidebar": True,
+#     "default_icon_parents":"fas fa-chevron-circle-right",
+#     "show_ui_builder": True,  
+# }
 
     

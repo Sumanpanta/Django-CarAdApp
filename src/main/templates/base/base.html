@@ -1,56 +1,72 @@
-{%load static%}
-<html lan="eng"  class="h-100">
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="h-100">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Suman Pant, learning developer">
+    <meta name="author" content="Hussain Mustafa, Preneure">
 
-    <!--Bootstrap css link-->
+    {% block 'title' %}
+    <title>MotoAd . List Your Car Today!</title>
+    {% endblock %}
+
+    <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
-        <!-- css link-->
-        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <!-- Custom Style CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
-
+    <!-- JQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    {%block 'body'%}
-            <!--Any flash messages pop up in any page because this is the base template-->
-            {% if messages %}
-            <div class="alert alert-dismissible" role="alert">
-              {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-              {% endfor %}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          {% endif %}
-          {% block content %}{% endblock %}
-        </div>
-      </div>
+    {% if messages %}
+    {% for message in messages %}
+    <div {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>
+        {{ message }}
     </div>
-  
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
-      <!-- A plugin for password show/hide  -->
-      <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
-  
+    {% endfor %}
+    {% endif %}
+    {% block 'header' %}
+    <header class="p-3 bg-dark text-white w-100 nav-masthead">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="{% url 'home' %}"
+                    class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <img class="bi me-2" width="32" height="32" src="{% static 'images/logo.png' %}"
+                        aria-label="Bootstrap">
+                </a>
+                {% if request.user.is_authenticated %}
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li>
+                        <a href="{% url 'profile' %}" class="nav-link px-2">Profile</a>
+                    </li>
+                </ul>
+                <div class="text-end">
+                    <a type="button" href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    {% endblock %}
+    {% block 'body'%}
     {% endblock %}
 </body>
+
 {% block 'footer' %}
 <footer class="footer text-muted bg-dark py-5">
     <div class="container">
         <p class="float-end mb-1">Powered by <a href="https://www.djangoproject.com/">Django</a></p>
         </p>
-        <p class="mb-1">AutoMaticx- Best Place To Buy & Sell Cars</p>
-        <p class="mb-0">© Copyright {% now 'Y' %} <a href="">AutoMaticx</a></p>
+        <p class="mb-1">MotoAd - Best Place To Buy & Sell Cars</p>
+        <p class="mb-0">© Copyright {% now 'Y' %} <a href="">MotoAd</a></p>
     </div>
 </footer>
-{%endblock%}
+{% endblock %}
+
 </html>
