@@ -12,4 +12,5 @@ urlpatterns = [
     path('listing/<str:id>/like/', like_listing_view, name='like_listing'),
     path('listing/<str:id>/inquire/',
          inquire_listing_using_email, name='inquire_listing'),
+    
 ]

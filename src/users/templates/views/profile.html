@@ -22,9 +22,9 @@
                 <div class="col-6">
                     {{ location_form|crispy }}
                 </div>
-                <br>
-                <button class="btn btn-lg btn-danger" type="submit" value="Submit">Save</button>
             </div>
+            <br>
+            <button class="btn btn-lg btn-danger" type="submit" value="Submit">Save</button>
         </form>
     </div>
     <div class="container px-4">
@@ -36,13 +36,30 @@
             </div>
         </div>
         <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Model</th>
+                    <th>Photo</th>
+                </tr>
+            </thead>
             <tbody>
                 {% for listing in user_listings %}
                 <tr>
                     <td>{{ listing.id }}</td>
-                    <td>{{listing.model }}</td>
+                    <td>{{ listing.model }}</td>
+                    <td>
+                        {% if listing.photo %}
+                            <img src="{{ listing.photo.url }}" alt="{{ listing.model }}" style="max-width: 100px;">
+                        {% else %}
+                            No Image Available
+                        {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}
+            </tbody>
+        </table>
+        
             </tbody>
         </table>
     </div>
